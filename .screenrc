@@ -1,0 +1,89 @@
+# GNU Screen configuration file
+#
+shell -/opt/local/bin/fish
+autodetach             on              # default: on
+crlf                  off             # default: off
+#deflogin              off             # default: on
+# defsilence            off             # default: off
+hardcopy_append       on              # default: off
+# nethack               on              # default: off
+startup_message       off             # default: on
+vbell                 on             # default: ???
+altscreen             on
+
+# ===============================================================
+# VARIABLES - Number values
+# ===============================================================
+  defscrollback         1000            # default: 100
+# msgminwait            3               # default: 1
+  silencewait           15              # default: 30
+
+sorendition 10 99 # default!
+setenv DISPLAY ''
+activity              "activity in %n (%t) [%w:%s]~"
+# bell:         This message *includes* a "beep" with '~'.
+bell                  "bell     in %n (%t) [%w:%s]~"
+#caption always
+
+#================================================
+# A bunch of hardstatus lines, Choose one that you like.
+# Taken from a bunch of config files that I could find, 
+# while trying to find the *perfect* hardstatus line.
+#================================================
+
+# ===============================
+# Hardstatus Line and sorendition
+# ===============================
+# hardstatus: Always show the window list in the last line:
+# hardstatus alwayslastline "%w"
+#
+# This will show the current time and today's date in YYmmdd, too:
+#hardstatus alwayslastline " %c | %Y%m%d |  %w"
+#
+# Same as the previous - but with COLOR! :-)
+# hardstatus alwayslastline "\033[m\033[42;30m %m%d \033[m \033[42;30m%c\033[m \033[42;30m %w \033[m"
+# hardstatus alwayslastline " %m%d \033[42;30m%c\033[m \033[42;30m %w \033[m"
+hardstatus alwayslastline "%-Lw%{= bW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus lastline "[%D, %d/%m/%y %C %a]  %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus alwayslastline "[%D,%c]  %-Lw%{= RW}%50>%n%f* %t%{-}%+Lw%<"
+
+#caption always "%{= kc}%?%-Lw%?%{= kY}%n*%f %t%?(%u)%?%{= kc}%?%+Lw%?"
+#caption always '%{= wb}%50=%n%f %t%{= wb}'
+#caption always '%{= wb}%50=%n%f %t%{= wb}'
+#caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus alwayslastline " %m%d %c \033[42;30m %w \033[m"
+
+#caption always "%>%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?%<"
+
+#[20:58:40]
+#hardstatus alwayslastline "[%c:%s, %D, %d/%m/%y] %w"
+#hardstatus alwayslastline "[%c:%s, %D, %d/%m/%y] %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus alwayslastline "[%D, %d/%m/%y %C %a]  %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%?"
+# caption always "%{=}%{+b kR}%H %{+b kY}%M %d %{+b kG}%2c %{+b kB}%?%-Lw%?%{+b kW}%n*%f %kt%?(%u)%?%{+bkB}%?%+Lw%? | %{kR} Load: %l %{kB}"
+
+# hardstatus alwayslastline "%H %w"
+# example by Adam Spiers <gnu-screen@adamspiers.org> :
+# *without* colors:
+# hardstatus alwayslastline "%?%-Lw%?%n*%f %t%?(%u)%?%?%+Lw%?"
+# *with* colors:
+#
+# This will show the current time and today's date in YYmmdd, too:
+# hardstatus alwayslastline " %c | %Y%m%d |  %w"
+#
+# This will show today's date in mmdd and the current time, too:
+# hardstatus alwayslastline " %m%d %c |  %w"
+#
+# hardstatus alwayslastline " [ %H ] %{wb} %c:%s | %d.%m.%Y %{wr} Load: %l %{wb} %w "
+# hardstatus alwayslastline " %H %{wb} %c:%s | %d.%m.%Y %{wr} Load: %l %{wk} %w "
+#hardstatus alwayslastline "%{bw}%1`%= %{+b ky}| %c:%s |%{+b rw} ip: %2` | vpn: %3`"
+#                                  |                          |          |
+#                                  heise (script in ~/bin/)   |          ipadr_vpn (script in ~/bin/)
+#                                                             |
+#                                                             ipadr (script in ~/bin/)
+#
+# note: the use of ANSI color sequences is deprecated.
+#       please upgrade to (at least) screen 3.9.13
+#       so you can make use of the color letters/names!
+screen -t air 0 $SHELL -l
+#screen -t yasny 1 ssh 192.168.1.6
