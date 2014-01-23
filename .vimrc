@@ -173,6 +173,23 @@ nnoremap <silent> k gk
     nnoremap q/ q/i
     nnoremap q? q?i
   " }}}
+  
+  " smash escape
+  inoremap jk <esc>
+  inoremap kj <esc>
+
+  " remap arrow keys
+  nnoremap <left> :bprev<CR>
+  nnoremap <right> :bnext<CR>
+  nnoremap <up> :tabnext<CR>
+  nnoremap <down> :tabprev<CR>
+
+  " general
+  nmap <leader>l :set list! list?<cr>
+  nnoremap <BS> :set hlsearch! hlsearch?<cr>
+
+  " make Y consistent with C and D. See :help Y.
+  nnoremap Y y$
 
 " }}}
 
@@ -255,9 +272,17 @@ endfunction
 " }}}
 
 " EasyMotion {{{
-let g:EasyMotion_leader_key = '<Leader>'
+  let g:EasyMotion_leader_key = '<Leader>'
 " }}}
-"
+
+" fish {{{
+  autocmd FileType fish setlocal foldmethod=expr textwidth=79
+" }}}
+
+" vim-endwise {{{
+  let g:endwise_no_mappings = 1
+" }}}
+
 " source .vim.custom
 if filereadable(".vim.custom")
   so .vim.custom
