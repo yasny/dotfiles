@@ -373,10 +373,6 @@ au Filetype qfix_memo setlocal textwidth=0
   endif
 " }}}
 
-" {{{ EverVim
-  let g:evervim_devtoken='S=s324:U=27f7680:E=151eaea9f65:C=14a93397158:P=1cd:A=en-devtoken:V=2:H=282bc4e986ee669bb08b5e39ebd65903'
-" }}}
-
 " {{{ SuperTab
   au FileType python set omnifunc=pythoncomplete#Complete foldmethod=indent foldlevel=99
   let g:SuperTabDefaultCompletionType = "context"
