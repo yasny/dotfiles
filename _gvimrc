@@ -25,26 +25,30 @@ if s:is_macvim
   set transparency=2
 endif
 
+set background=dark
+
 " IME settings {{{
-set imsearch=0
-inoremap <ESC> <ESC>:set iminsert=0<CR>
-inoremap <C-ESC> <C-ESC>:set iminsert=0<CR>
-highlight CusorIM guibg=Purple guifg=NONE
+  set imsearch=0
+  inoremap <ESC> <ESC>:set iminsert=0<CR>
+  inoremap <C-ESC> <C-ESC>:set iminsert=0<CR>
+  highlight CusorIM guibg=Purple guifg=NONE
 " }}}
 
 " Mouse settings {{{
-set mouse=a
-set nomousefocus
-set mousehide
+  set mouse=a
+  set nomousefocus
+  set mousehide
 " }}}
 
 " miniBufExplorer {{{
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplMapWindowNavArrows=1
+  let g:miniBufExplMapCTabSwitchBufs=1
+  let g:miniBufExplMapWindowNavArrows=1
 " }}}
 
 " source .gvim.custom file if it exists
 if filereadable(".gvim.custom")
   so .gvim.custom
 endif
+
+set nopaste
 
