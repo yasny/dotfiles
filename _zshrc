@@ -87,6 +87,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias v="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vn="vim -c 'NERDTreeToggle'"
 alias gvim="/Applications/MacVim.app/Contents/MacOS/Vim -g"
 alias c="clear"
 alias ql="quick-look"
