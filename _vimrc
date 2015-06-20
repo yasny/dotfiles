@@ -71,11 +71,11 @@ set splitright
 set noerrorbells
 set paste
 
-if has('gui_running')
+"if has('gui_running')
   set cursorline
   autocmd WinLeave * setlocal nocursorline
   autocmd WinEnter * setlocal cursorline
-endif
+"endif
 
 " add qfixapp to runtime path
 set runtimepath+=~/Applications/qfixapp
