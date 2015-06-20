@@ -1,0 +1,92 @@
+set fish_greeting ""
+
+alias groovy "~/Applications/groovy/bin/groovy"
+alias gvim "/Applications/MacVim.app/Contents/MacOS/Vim -g"
+alias vim "/Applications/MacVim.app/Contents/MacOS/Vim"
+alias mvn "~/Applications/apache-maven-3.2.3/bin/mvn"
+alias c clear
+
+set -x CLICOLOR 1
+set -x EDITOR vim
+set -x PATH /opt/local/bin $PATH
+set -x JAVA_HOME (/usr/libexec/java_home -v 1.7.0_67)
+set -x JAVA_TOOL_OPTIONS "-Dfile.encoding=UTF-8"
+
+function screen_auto_attach
+  if [ -z "$STY" ]
+    exec screen -dR
+  end
+end
+
+function tmux_auto_attach
+  if [ -z "$TMUX" ]
+    if tmux has-session -t mac-mini
+      echo "Session already exists. Attaching..."
+      sleep 1
+      exec tmux attach -t mac-mini
+      exit 0
+    end
+    tmux new-session -d -s mac-mini
+    tmux new-session -d -s work
+    tmux new-session -d -s play
+    #tmux new-window -t play:0 -k -n TTYtter
+    tmux new-window -t play:1 -k -n play
+    tmux new-window -t mac-mini:0 -k -n mac-mini
+    cd ~/Dropbox
+    tmux new-window -t mac-mini:1 -k -n dropbox
+    cd
+    tmux new-window -t work:0 -k -n work
+    tmux select-window -t work:0
+    tmux select-window -t play:0
+    tmux select-window -t mac-mini:0
+    exec tmux attach -t mac-mini
+  end
+end
+
+function _wwwjdic
+  if [ -z "$argv" ]
+    return
+  end
+
+  set -l url "http://www.csse.monash.edu.au/~jwb/cgi-bin/wwwjdic.cgi?"
+  set -l opt $argv[1]
+  set -l str $argv[2]
+
+  w3m "$url$opt$str"
+end
+
+function --description="Performs a Japanese to English search" je
+  set -l opt "1MUJ"
+
+  if [ -z "$argv" ]
+    return
+  end
+
+  for o in $argv
+    set str "$str+$o"
+  end
+
+  set str (echo $str | sed 's/^\+//')
+  _wwwjdic $opt $str
+end
+
+function --description="Performs an English to Japanese search" ej
+  set -l opt "1MUE"
+
+  if [ -z "$argv" ]
+    return
+  end
+
+  for o in $argv
+    set str "$str+$o"
+  end
+
+  set str (echo $str | sed 's/^\+//')
+  _wwwjdic $opt $str
+end
+
+# run screen attach only on interactive shell
+# fixes MacVim from not opening
+if status --is-interactive
+  tmux_auto_attach
+end

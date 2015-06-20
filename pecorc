@@ -1,0 +1,11 @@
+{
+  "Keymap": {
+    "C-f": "peco.ScrollPageDown",
+    "C-b": "peco.ScrollPageUp",
+    "C-j": "peco.SelectDown",
+    "C-k": "peco.SelectUp"
+  },
+  "Style": {
+    "Selected": ["white", "on_magenta", "bold"]
+  }
+}
