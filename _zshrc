@@ -95,6 +95,8 @@ alias ql="quick-look"
 setopt RM_STAR_WAIT
 setopt interactivecomments
 
+export PATH="$PATH:${HOME}/Applications/PathPicker"
+
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
