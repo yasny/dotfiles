@@ -83,13 +83,14 @@ set runtimepath+=~/Applications/qfixapp
 " for text files, set text width to 80 char
 autocmd FileType text set textwidth=150
 
-" set shell to bash if not using fish
-if &shell =~# 'fish$'
-  set shell=/bin/bash
-endif
-
 if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
+endif
+
+" Jump to last position when reopening file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
 endif
 
 " Searching {{{
@@ -383,6 +384,7 @@ au Filetype qfix_memo setlocal textwidth=0
   let NERDTreeHighlightCursorline = 1
   let NERDTreeQuitOnOpen = 1
   let NERDTreeMinimalUI = 1
+  let NERDTreeIgnore = ['\.o$', '\~$', '\.pyc$', '\.class$']
 " }}}
 
 " {{{ source .vim.custom
