@@ -261,10 +261,11 @@ au Filetype qfix_memo setlocal textwidth=0
 
 " Unite.vim {{{
   let g:unite_source_history_yank_enable = 0
-  let g:unite_enable_start_insert=1
+  let g:unite_enable_start_insert=0
   let g:unite_data_directory='~/.vim/.cache/unite'
   let g:unite_source_rec_max_cache_files=1000
   let g:unite_prompt='≫ '
+  let g:unite_source_outline_ctags_program='/opt/local/bin/ctags'
   if executable("ag")
     let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
   end
