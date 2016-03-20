@@ -5,31 +5,21 @@
   let s:is_macvim = has('gui_macvim')
 "}}}
 
-"set guifont=Monaco:h9.00
-"silent! colorscheme macvim
-set showtabline=2 
-"set gfn=Osaka-Mono:h14
+set showtabline=2
 set gfn=IPAゴシック:h14
-"set guioptions=gmrLtT
 set guioptions=gmrLta
-" set lines=68 columns=110
-" set noanti " turn off anti-alias
-" set lines=999 columns=9999
 
 set lines=999 columns=9999
 if s:is_windows
   autocmd GUIEnter * simalt ~x
 endif
 
-if s:is_macvim
-  set transparency=2
-endif
-
 set background=dark
 
 " IME settings {{{
   set imsearch=0
-  inoremap <ESC> <ESC>:set iminsert=0<CR>
+  map <silent> <ESC> <ESC>:set iminsert=0<CR>
+  inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
   inoremap <C-ESC> <C-ESC>:set iminsert=0<CR>
   highlight CusorIM guibg=Purple guifg=NONE
 " }}}
@@ -49,6 +39,4 @@ set background=dark
 if filereadable(".gvim.custom")
   so .gvim.custom
 endif
-
-set nopaste
 
