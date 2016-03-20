@@ -2,37 +2,35 @@ set nocompatible
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-"set ruler
-set ts=2
-set ai
-set noincsearch
+
+set autoindent
 set binary noeol
-"set noimdisableactivate
-"set backspace=indent,eol,start
-set showmatch
-set matchtime=2
-set lazyredraw
 set timeoutlen=300
 set ttimeoutlen=50
 set virtualedit=all
-
-" バックスペースでインデントや改行を削除できるようにする
 set backspace=2
+set noerrorbells
 set novisualbell
 set t_vb=
-set nobackup
+set backup
+set backupdir=$HOME/.vim/files/backup/
+set backupext=-vimbackup
+set backupskip=
+set directory=$HOME/.vim/files/swap//
+set updatecount=100
+set undofile
+set undodir=$HOME/.vim/files/undo/
 set nowrap
-set expandtab
 set nu!
 set wildmenu
-set modeline
 set laststatus=2
 set foldmethod=marker
-set shiftwidth=2
-set softtabstop=2
-set nopaste
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
 set ttyfast
-"autocmd FileType python runtime! autoload/pythoncomplete.vim
 
 " set directories for swap files
 set dir=~/tmp,/var/tmp,/tmp
@@ -46,11 +44,12 @@ set nrformats-=octal                                "always assume decimal numbe
 "set showcmd
 set tags=tags;/
 set showfulltag
+set modeline
 set modelines=5
 set history=1000
 
 set linebreak
-let &showbreak='↪ '
+"let &showbreak='↪ '
 
 if exists('&ambiwidth')
   set ambiwidth=double
@@ -69,22 +68,17 @@ set sidescrolloff=5
 set splitbelow
 set splitright
 set noerrorbells
-set paste
+language en_US.UTF-8
 
-"if has('gui_running')
-  set cursorline
-  autocmd WinLeave * setlocal nocursorline
-  autocmd WinEnter * setlocal cursorline
-"endif
+set cursorline
+autocmd WinLeave * setlocal nocursorline
+autocmd WinEnter * setlocal cursorline
 
-" add qfixapp to runtime path
-set runtimepath+=~/Applications/qfixapp
-
-" for text files, set text width to 80 char
+" for text files, set text width to 150 char
 autocmd FileType text set textwidth=150
 
 if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
+  set t_Co=256
 endif
 
 " Jump to last position when reopening file
@@ -93,8 +87,51 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
+" Dein.vim {{{
+	set runtimepath^=~/.cache/dein.vim/repos/github.com/Shougo/dein.vim
+
+	call dein#begin(expand('~/.cache/dein.vim'))
+	call dein#add('Shougo/dein.vim')
+	call dein#add('Shougo/vimproc.vim',{
+		\ 'build':{
+		\	'mac': 'make -f make_mac.mak',
+		\	'linux': 'make',
+		\	'windows': 'tools\\update-dll-mingw'
+		\ }
+		\ })
+	call dein#add('Shougo/unite.vim')
+	call dein#add('Shougo/unite-outline')
+	call dein#add('Shougo/vimshell.vim')
+	call dein#add('tmhedberg/matchit')
+	call dein#add('terryma/vim-multiple-cursors')
+	call dein#add('scrooloose/nerdtree')
+	call dein#add('sjl/gundo.vim')
+	call dein#add('ervandew/supertab')
+	call dein#add('easymotion/vim-easymotion')
+	call dein#add('tpope/vim-endwise')
+	call dein#add('tpope/vim-eunuch')
+	call dein#add('tpope/vim-fugitive')
+	call dein#add('tpope/vim-surround')
+	call dein#add('godlygeek/tabular')
+	call dein#add('plasticboy/vim-markdown')
+	call dein#add('mhinz/vim-startify')
+	call dein#add('mileszs/ack.vim')
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('wincent/command-t')
+	call dein#add('kannokanno/previm')
+	call dein#add('Raimondi/delimitMate')
+	call dein#end()
+
+	if dein#check_install()
+	  call dein#install()
+	endif
+" }}}
+
 " Searching {{{
+  set showmatch
+  set matchtime=2
   set hlsearch
+  set noincsearch
   set ignorecase
   set smartcase
   if executable('ack')
@@ -143,19 +180,20 @@ endif
 " }}}
 
 " QFixHowm Settings {{{
-let QFixHowm_Key         ='g'
-let howm_dir             ='~/Dropbox/個人/vim_howm'
-let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
-let howm_fileencoding    = 'utf-8'
-let howm_fileformat      = 'unix'
-let QFixHowm_FileType    = 'markdown'
-let QFixHowm_Title       = '#'
-let QFixHowm_HolidayFile = '~/Applications/qfixapp/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
-" QuickFixウィンドウでもプレビューや絞り込みを有効化
-let QFixWin_EnableMode = 1
-" QFixHowm/QFixGrepの結果表示にロケーションリストを使用する/しない
-let QFix_UseLocationList = 1
-au Filetype qfix_memo setlocal textwidth=0
+  set runtimepath+=~/Applications/qfixapp
+  let QFixHowm_Key         ='g'
+  let howm_dir             ='~/Dropbox/個人/vim_howm'
+  let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
+  let howm_fileencoding    = 'utf-8'
+  let howm_fileformat      = 'unix'
+  let QFixHowm_FileType    = 'markdown'
+  let QFixHowm_Title       = '#'
+  let QFixHowm_HolidayFile = '~/Applications/qfixapp/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
+  " QuickFixウィンドウでもプレビューや絞り込みを有効化
+  let QFixWin_EnableMode = 1
+  " QFixHowm/QFixGrepの結果表示にロケーションリストを使用する/しない
+  let QFix_UseLocationList = 1
+  au Filetype qfix_memo setlocal textwidth=0
 " }}}
 
 " Key Settings {{{
@@ -327,6 +365,7 @@ au Filetype qfix_memo setlocal textwidth=0
 " }}}
 
 " vim-startify {{{
+  let g:startify_custom_header = ['']
   let g:startify_session_dir = '~/.vim/.cache/sessions'
   let g:startify_change_to_vcs_root = 1
   let g:startify_show_sessions = 1
@@ -376,9 +415,14 @@ au Filetype qfix_memo setlocal textwidth=0
 " }}}
 
 " {{{ SuperTab
-  au FileType python set omnifunc=pythoncomplete#Complete foldmethod=indent foldlevel=99
   let g:SuperTabDefaultCompletionType = "context"
   set completeopt=menuone,longest,preview
+  let g:SuperTabDefaultCompletionTypeDiscovery = [
+    \ "&completefunc:<c-x><c-u>",
+    \ "&omnifunc:<c-x><c-o>",
+    \ ]
+  let g:SuperTabLongestHighlight = 1
+  let g:SuperTabClosePreviewOnPopupClose = 1
 " }}}
 
 " {{{ NERDTree
@@ -386,6 +430,10 @@ au Filetype qfix_memo setlocal textwidth=0
   let NERDTreeQuitOnOpen = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeIgnore = ['\.o$', '\~$', '\.pyc$', '\.class$']
+" }}}
+
+" {{{ DelimitMate
+	let delimitMate_expand_cr = 1
 " }}}
 
 " {{{ source .vim.custom
