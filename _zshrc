@@ -70,6 +70,8 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 export EDITOR='vim'
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -95,7 +97,7 @@ alias ql="quick-look"
 setopt RM_STAR_WAIT
 setopt interactivecomments
 
-export PATH="$PATH:${HOME}/Applications/PathPicker"
+export PATH="$PATH:${HOME}/Applications/PathPicker:${HOME}/Applications/groovy/bin"
 
 function peco-select-history() {
     local tac
@@ -112,3 +114,23 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+function pman() {
+  man -t "$1" | open -f -a /Applications/Preview.app
+}
+
+case ${OSTYPE} in
+darwin*)
+	function macvim() {
+		if [ -d /Applications/MacVim.app ]; then
+			#[ ! -f $1 ] && touch $1
+			open -a MacVim $1
+		else
+			vim $1
+		fi
+	}
+	alias gvim="macvim"
+	alias mvim="macvim"
+	;;
+esac
+
