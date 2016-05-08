@@ -87,13 +87,6 @@ export VISUAL=$EDITOR
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias v="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias vn="vim -c 'NERDTreeToggle'"
-alias gvim="/Applications/MacVim.app/Contents/MacOS/Vim -g"
-alias c="clear"
-alias ql="quick-look"
-alias .='open'
 
 setopt RM_STAR_WAIT
 setopt interactivecomments
@@ -116,12 +109,12 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-function pman() {
-  man -t "$1" | open -f -a /Applications/Preview.app
-}
-
 case ${OSTYPE} in
 darwin*)
+	function pman() {
+	  man -t "$1" | open -f -a /Applications/Preview.app
+	}
+
 	function macvim() {
 		if [ -d /Applications/MacVim.app ]; then
 			#[ ! -f $1 ] && touch $1
@@ -130,8 +123,17 @@ darwin*)
 			vim $1
 		fi
 	}
+
 	alias gvim="macvim"
 	alias mvim="macvim"
+
+	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+	alias v="/Applications/MacVim.app/Contents/MacOS/Vim"
+	alias vn="vim -c 'NERDTreeToggle'"
+	alias gvim="/Applications/MacVim.app/Contents/MacOS/Vim -g"
+	alias c="clear"
+	alias ql="quick-look"
+	alias .='open'
 	;;
 esac
 
