@@ -93,6 +93,7 @@ alias vn="vim -c 'NERDTreeToggle'"
 alias gvim="/Applications/MacVim.app/Contents/MacOS/Vim -g"
 alias c="clear"
 alias ql="quick-look"
+alias .='open'
 
 setopt RM_STAR_WAIT
 setopt interactivecomments
