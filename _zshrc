@@ -51,11 +51,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx rake ruby tmux taskwarrior python sudo terminalapp z)
+plugins=(git osx rake ruby tmux python sudo docker z)
 
 # User configuration
 
-export PATH="/Users/iwalker/.rvm/gems/ruby-2.1.0/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0@global/bin:/Users/iwalker/.rvm/rubies/ruby-2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/Users/iwalker/.rvm/bin:/opt/local/bin"
+export PATH="/usr/local/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0@global/bin:/Users/iwalker/.rvm/rubies/ruby-2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/Users/iwalker/.rvm/bin:/opt/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -74,7 +74,7 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -87,11 +87,14 @@ export VISUAL=$EDITOR
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 
 setopt RM_STAR_WAIT
 setopt interactivecomments
 
 export PATH="$PATH:${HOME}/Applications/PathPicker:${HOME}/Applications/groovy/bin"
+
+export PIP_REQUIRE_VIRTUALENV=true
 
 function peco-select-history() {
     local tac
