@@ -4,7 +4,7 @@ config windowHintsShowIcons true
 config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
 
-#bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN # use whatever keys you want
+bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN # use whatever keys you want
 
 #bind g:cmd grid padding:5 0:6,2 1:8,3
 
@@ -41,10 +41,10 @@ bind .:shift;cmd ${bottomright}
 bind p:shift;cmd ${topright}
  
 # Resize - Resizes the window in the specified direction
-bind l:alt resize +1% +0
+#bind l:alt resize +1% +0
  
 # Nudge - Nudges the window in the specified direction
-bind l:shift;alt nudge +1% +0
+#bind l:shift;alt nudge +1% +0
  
 # Focus - Brings the focus to the window in the specified position
-bind l:shift;ctrl focus right
+#bind l:shift;ctrl focus right
