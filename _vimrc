@@ -91,13 +91,7 @@ endif
 
 	call dein#begin(expand('~/.cache/dein.vim'))
 	call dein#add('Shougo/dein.vim')
-	call dein#add('Shougo/vimproc.vim',{
-		\ 'build':{
-		\	'mac': 'make -f make_mac.mak',
-		\	'linux': 'make',
-		\	'windows': 'tools\\update-dll-mingw'
-		\ }
-		\ })
+	call dein#add('Shougo/vimproc.vim',{ 'build':'make -f make_mac.mak' })
 	call dein#add('Shougo/unite.vim')
 	call dein#add('Shougo/unite-outline')
 	call dein#add('Shougo/vimshell.vim')
@@ -119,6 +113,7 @@ endif
 	call dein#add('wincent/command-t')
 	call dein#add('kannokanno/previm')
 	call dein#add('Raimondi/delimitMate')
+	call dein#add('altercation/vim-colors-solarized')
 	call dein#end()
 
 	if dein#check_install()
@@ -270,7 +265,6 @@ endif
   let g:Tex_CompileRule_pdf='xelatex -shell-escape --interaction=nonstopmode %'
   let g:Tex_ViewRule_pdf='open -a Preview'
   let g:Tex_Menus=0
-  set iskeyword+=:
 " }}}
 
 " Previm {{{
