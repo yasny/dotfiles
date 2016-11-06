@@ -55,7 +55,7 @@ plugins=(git osx rake ruby tmux python sudo docker z)
 
 # User configuration
 
-export PATH="/usr/local/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0@global/bin:/Users/iwalker/.rvm/rubies/ruby-2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/Users/iwalker/.rvm/bin:/opt/local/bin"
+export PATH="/usr/local/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0/bin:/Users/iwalker/.rvm/gems/ruby-2.1.0@global/bin:/Users/iwalker/.rvm/rubies/ruby-2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/iwalker/.rvm/bin:/opt/local/bin:/usr/local/texlive/2016/bin/x86_64-darwin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
