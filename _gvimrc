@@ -17,6 +17,9 @@ endif
 if s:is_macvim
 	set guifont=Monaco:h14
 	set guifontwide=IPAexゴシック:h14
+	" http://qiita.com/martini3oz/items/e51911bfa72f172ce16b
+	noremap! ¥ \
+	noremap! \ ¥
 endif
 
 set background=dark
